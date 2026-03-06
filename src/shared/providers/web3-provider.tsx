@@ -2,7 +2,7 @@
 
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { wagmiConfig } from "@/config/wagmi";
+import { wagmiConfig } from "@/shared/config/wagmi";
 
 import "@rainbow-me/rainbowkit/styles.css";
 

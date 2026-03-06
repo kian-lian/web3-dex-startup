@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { wagmiConfig } from "@/config/wagmi";
+import { wagmiConfig } from "@/shared/config/wagmi";
 
 describe("wagmi config", () => {
   it("should include all required chains", () => {
