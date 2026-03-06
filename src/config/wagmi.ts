@@ -1,5 +1,5 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { mainnet, arbitrum, optimism, polygon, base } from "wagmi/chains";
+import { arbitrum, base, mainnet, optimism, polygon } from "wagmi/chains";
 
 // WalletConnect projectId is required for production
 // Get one at https://cloud.walletconnect.com

@@ -23,6 +23,9 @@
         "noExplicitAny": "error",
         "noEmptyBlockStatements": "error"
       },
+      "nursery": {
+        "useSortedClasses": "warn"
+      },
       "complexity": {
         "noExcessiveCognitiveComplexity": {
           "level": "warn",

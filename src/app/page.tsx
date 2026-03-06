@@ -1,8 +1,8 @@
 "use client";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount, useBalance, useChainId } from "wagmi";
 import { formatEther } from "viem";
+import { useAccount, useBalance, useChainId } from "wagmi";
 
 export default function Home() {
   const { address, isConnected } = useAccount();
