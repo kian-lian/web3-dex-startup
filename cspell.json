@@ -1,0 +1,42 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    "pnpm-lock.yaml",
+    ".next",
+    "components/ui/**",
+    "*.snap",
+    "coverage"
+  ],
+  "useGitignore": true,
+  "words": [
+    "wagmi",
+    "viem",
+    "rainbowkit",
+    "walletconnect",
+    "dex",
+    "defi",
+    "slippage",
+    "chainid",
+    "mainnet",
+    "arbitrum",
+    "optimism",
+    "tanstack",
+    "shadcn",
+    "tailwindcss",
+    "postcss",
+    "biomejs",
+    "biome",
+    "commitlint",
+    "vitest",
+    "pnpm",
+    "nextjs",
+    "geist",
+    "antialiased",
+    "tsconfig",
+    "nodenext",
+    "pino",
+    "multistream"
+  ]
+}
