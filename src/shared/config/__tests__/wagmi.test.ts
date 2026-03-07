@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { wagmiConfig } from "@/shared/config/wagmi";
 
 describe("wagmi config", () => {
-  it("should include all required chains", () => {
+  it("should include all required mainnet chains", () => {
     const chainIds = wagmiConfig.chains.map((chain) => chain.id);
 
     // Ethereum mainnet
@@ -17,7 +17,17 @@ describe("wagmi config", () => {
     expect(chainIds).toContain(8453);
   });
 
-  it("should have exactly 5 chains configured", () => {
-    expect(wagmiConfig.chains).toHaveLength(5);
+  it("should include testnets when NEXT_PUBLIC_ENABLE_TESTNETS is true", () => {
+    // .env.test sets NEXT_PUBLIC_ENABLE_TESTNETS=true
+    const chainIds = wagmiConfig.chains.map((chain) => chain.id);
+
+    // Sepolia
+    expect(chainIds).toContain(11155111);
+    // Arbitrum Sepolia
+    expect(chainIds).toContain(421614);
+  });
+
+  it("should have at least 5 mainnet chains configured", () => {
+    expect(wagmiConfig.chains.length).toBeGreaterThanOrEqual(5);
   });
 });

@@ -37,6 +37,7 @@
     "tsconfig",
     "nodenext",
     "pino",
-    "multistream"
+    "multistream",
+    "biteagle"
   ]
 }

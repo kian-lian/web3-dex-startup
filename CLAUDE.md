@@ -21,8 +21,8 @@
 
 ## UI 组件
 
-- shadcn/ui 组件位于 `components/ui/`，通过 CLI 添加：`npx shadcn@latest add <component>`
-- 引入路径使用项目本地路径（`@/components/ui/button`），而非外部包
+- shadcn/ui 组件通过 CLI 添加：`npx shadcn@latest add <component>`
+- 安装后位于 `src/shared/components/ui/`，引入路径使用 `@/shared/components/ui/button`
 
 ## MCP 服务集成
 
@@ -36,6 +36,24 @@
 - 格式化：`npx @biomejs/biome format --write .`
 - Lint：`npx @biomejs/biome lint .`
 - 全量检查：`npx @biomejs/biome check --write .`
+
+## 测试命令
+
+- 运行测试：`pnpm test`（watch 模式）/ `pnpm test:run`（单次）
+- 覆盖率：`pnpm test:coverage`
+- 拼写检查：`pnpm spellcheck`
+
+## 环境配置
+
+分环境配置通过 `.env.*` 文件体系管理，统一入口为 `src/shared/config/env.ts`：
+
+- `.env` — 共享默认值（提交到 git）
+- `.env.development` — `pnpm dev` 时加载（测试网、Sentry 关闭）
+- `.env.test` — vitest 时加载
+- `.env.production` — `pnpm build` 时加载（主网、Sentry 采样）
+- `.env.local` — 本地密钥覆盖（gitignored）
+
+业务代码从 `@/shared/config/env` 导入配置，不直接读 `process.env`。
 
 ## 工具链
 

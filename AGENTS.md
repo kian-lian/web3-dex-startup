@@ -6,7 +6,7 @@
 
 ## 项目概述
 
-基于 Next.js 的 Web3 DEX 聚合器前端。通过 Wagmi/RainbowKit 连接用户钱包，聚合链上 DEX 流动性，提供代币兑换界面。纯前端项目，不包含智能合约或后端服务。
+基于 Next.js 的 Web3 DEX 聚合器前端。通过 Wagmi/RainbowKit 连接用户钱包，聚合链上 DEX 流动性，提供代币兑换界面。纯前端项目，不包含智能合约。
 
 ## 技术架构
 
@@ -24,14 +24,17 @@
 
 ```
 src/
-  app/            # Next.js 页面和布局（App Router）
-  components/     # 业务组件
-  components/ui/  # shadcn/ui 组件（CLI 生成，勿手动修改）
-  config/         # 配置文件（wagmi 链配置等）
-  providers/      # 全局 Provider（Web3Provider、QueryProvider）
-  hooks/          # 自定义 React hooks
-  lib/            # 工具函数和通用逻辑
-  types/          # 共享类型定义
+  app/                # Next.js 页面和布局（App Router，含 (dex) 路由组）
+  features/           # 功能模块，每个模块含 components/hooks/lib
+    swap/             # 兑换功能
+    token/            # 代币相关
+    wallet/           # 钱包连接
+  shared/             # 跨功能共享代码
+    config/           # 配置文件（wagmi、env 等）
+    lib/              # 工具函数
+    providers/        # 全局 Provider（Web3Provider、QueryProvider）
+    components/ui/    # shadcn/ui 组件（CLI 生成，勿手动修改）
+  test/               # 测试配置和 setup
 ```
 
 ## Setup 命令
@@ -42,6 +45,10 @@ pnpm dev              # 启动开发服务器
 pnpm build            # 生产构建
 pnpm lint             # 代码检查（Biome）
 pnpm format           # 代码格式化（Biome）
+pnpm test             # 运行测试（watch 模式）
+pnpm test:run         # 运行测试（单次）
+pnpm test:coverage    # 测试覆盖率
+pnpm spellcheck       # 拼写检查
 ```
 
 ## 代码风格
@@ -60,20 +67,20 @@ pnpm format           # 代码格式化（Biome）
 
 - 默认 Server Component，仅在需要浏览器 API / React 状态 / Web3 hooks 时标记 `"use client"`
 - `"use client"` 边界下沉到叶子节点
-- 使用 shadcn/ui 组件时从 `@/components/ui/` 引入
+- 使用 shadcn/ui 组件时从 `@/shared/components/ui/` 引入
 
 ### Import 顺序
 
 1. React / Next.js
 2. 第三方库（wagmi、viem、@tanstack 等）
-3. 项目内部模块（`@/components`、`@/hooks`、`@/lib`）
+3. 项目内部模块（`@/shared`、`@/features`）
 4. 类型导入（`type` imports 放最后）
 
 ## Web3 约定
 
 ### Provider 结构
 
-所有全局 Provider 在 `src/providers/` 中管理，通过组合模式嵌套：
+所有全局 Provider 在 `src/shared/providers/` 中管理，通过组合模式嵌套：
 
 ```
 QueryProvider → Web3Provider（WagmiProvider + RainbowKitProvider）
@@ -93,7 +100,8 @@ QueryProvider → Web3Provider（WagmiProvider + RainbowKitProvider）
 
 ### 支持的链
 
-Ethereum、Arbitrum、Optimism、Polygon、Base（配置见 `src/config/wagmi.ts`）
+Ethereum、Arbitrum、Optimism、Polygon、Base（配置见 `src/shared/config/wagmi.ts`）
+开发环境额外包含 Sepolia、Arbitrum Sepolia（由 `NEXT_PUBLIC_ENABLE_TESTNETS` 控制）
 
 ## Git 规范
 
@@ -110,9 +118,9 @@ Ethereum、Arbitrum、Optimism、Polygon、Base（配置见 `src/config/wagmi.ts
 ### 环境变量
 
 - 敏感信息通过 `.env.local` 注入
-- `.env*` 已被 `.gitignore` 排除
+- `.env*.local` 被 `.gitignore` 排除；`.env` / `.env.{development,test,production}` 提交到 git
 - 公开变量使用 `NEXT_PUBLIC_` 前缀
-- 示例见 `.env.example`
+- 配置统一入口：`src/shared/config/env.ts`（业务代码从此导入，不直接读 process.env）
 
 ## 安全检查清单
 

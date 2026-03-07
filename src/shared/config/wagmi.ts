@@ -1,21 +1,25 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { arbitrum, base, mainnet, optimism, polygon } from "wagmi/chains";
+import {
+  arbitrum,
+  arbitrumSepolia,
+  base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
+} from "wagmi/chains";
+import { appName, enableTestnets, walletConnectProjectId } from "./env";
 
-// WalletConnect projectId is required for production
-// Get one at https://cloud.walletconnect.com
-const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
+const mainnetChains = [mainnet, arbitrum, optimism, polygon, base] as const;
+const testnetChains = [sepolia, arbitrumSepolia] as const;
 
-if (!projectId) {
-  console.warn(
-    "⚠️ NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not set. " +
-      "Wallet connections will not work. " +
-      "Get a projectId at https://cloud.walletconnect.com",
-  );
-}
+const chains = enableTestnets
+  ? ([...mainnetChains, ...testnetChains] as const)
+  : mainnetChains;
 
 export const wagmiConfig = getDefaultConfig({
-  appName: "Web3 DEX",
-  projectId: projectId ?? "YOUR_PROJECT_ID",
-  chains: [mainnet, arbitrum, optimism, polygon, base],
+  appName,
+  projectId: walletConnectProjectId || "YOUR_PROJECT_ID",
+  chains,
   ssr: true,
 });
