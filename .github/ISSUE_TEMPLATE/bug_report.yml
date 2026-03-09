@@ -1,0 +1,52 @@
+name: Bug Report
+description: 报告一个 Bug
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰简洁地描述遇到的问题
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 如何触发这个 Bug？
+      placeholder: |
+        1. 打开 '...'
+        2. 点击 '...'
+        3. 看到错误
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+      description: 你期望发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 实际发生了什么？
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器 / 钱包
+      description: 例如 Chrome 120 / MetaMask 11.x
+      placeholder: Chrome 120 / MetaMask 11.x
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 控制台日志 / 截图
+      description: 粘贴相关日志或截图（可选）

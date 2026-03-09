@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      web3:
+        patterns:
+          - "wagmi"
+          - "viem"
+          - "@rainbow-me/*"
+        update-types:
+          - minor
+          - patch
+      testing:
+        patterns:
+          - "vitest"
+          - "@testing-library/*"
+      dev-tooling:
+        patterns:
+          - "@biomejs/*"
+          - "typescript"
+          - "husky"
+          - "lint-staged"
+          - "@commitlint/*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    labels:
+      - ci
