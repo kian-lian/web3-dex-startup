@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
-// Mock next/navigation — App Router hooks 在测试环境中不可用
+// Mock next/navigation — App Router hooks are unavailable in test environment
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),

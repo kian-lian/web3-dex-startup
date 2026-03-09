@@ -1,31 +1,31 @@
 name: Feature Request
-description: 提出一个新功能建议
+description: Suggest a new feature
 labels: ["enhancement"]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: 问题 / 动机
-      description: 这个功能要解决什么问题？
+      label: Problem / Motivation
+      description: What problem does this feature solve?
     validations:
       required: true
 
   - type: textarea
     id: solution
     attributes:
-      label: 建议的方案
-      description: 你希望如何实现？
+      label: Proposed Solution
+      description: How would you like it to be implemented?
     validations:
       required: true
 
   - type: textarea
     id: alternatives
     attributes:
-      label: 备选方案
-      description: 你考虑过的其他方案（可选）
+      label: Alternatives Considered
+      description: Other approaches you have considered (optional)
 
   - type: textarea
     id: context
     attributes:
-      label: 补充说明
-      description: 其他上下文、截图或参考链接（可选）
+      label: Additional Context
+      description: Any other context, screenshots, or reference links (optional)

@@ -14,7 +14,7 @@ export default {
   extends: ["@commitlint/config-conventional"],
   plugins: [noAiCoAuthorPlugin],
   rules: {
-    // 与 AGENTS.md 定义的 type 保持一致
+    // Keep in sync with commit types defined in AGENTS.md
     "type-enum": [
       2,
       "always",
