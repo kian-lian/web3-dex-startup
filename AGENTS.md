@@ -1,16 +1,62 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository follows a **Feature-First** architecture.
+This repository follows a **Feature-First** architecture: routes in `app/`, business logic in `features/`, shared infrastructure in `shared/`.
 
-- `src/app/`: Next.js App Router entry layer (pages, layouts, route files).
-- `src/features/`: Business domains (`swap`, `token`, `wallet`) with local types/constants and feature APIs.
-- `src/shared/`: Cross-feature infrastructure (`config/`, `providers/`, `lib/`).
-- `src/test/`: Shared test setup.
-- `public/`: Static assets.
-- `docs/engineering/`: CI and security process documentation.
+```
+src/
+  app/              # Route shell — only Next.js convention files (page, layout, loading, error)
+    (dex)/          # Route Group: DEX pages (swap, portfolio) with shared nav layout
+    api/            # API Routes
+  features/         # Business core — one directory per domain
+    swap/           # Token exchange
+      components/   # Feature-specific UI components
+      hooks/        # Data fetching and interaction hooks (wagmi wrappers)
+      lib/          # Pure utility functions (no React dependency)
+      types.ts      # Domain types (SwapParams, SwapQuote)
+      constants.ts  # Domain constants (DEFAULT_SLIPPAGE, MAX_SLIPPAGE)
+      index.ts      # Public API — external code MUST import from here
+    token/          # Token list, search, favorites
+    wallet/         # Wallet status, balance, transaction history
+  shared/           # Cross-feature infrastructure
+    components/ui/  # shadcn/ui components (CLI-generated, do not hand-edit)
+    config/         # wagmi chain config, env config
+    providers/      # Global providers (Web3Provider, QueryProvider)
+    hooks/          # Shared hooks
+    lib/            # Utility functions (address formatting, etc.)
+    types/          # Shared type definitions
+    constants/      # Shared constants
+  test/             # Shared test setup
+```
 
-Keep business logic in feature modules and move reusable cross-feature code to `src/shared`. Avoid deep cross-feature imports.
+Keep business logic in feature modules. Move reusable cross-feature code to `src/shared/`.
+
+## Architecture Rules
+
+### Dependency Direction
+
+Allowed: `app → features → shared`, `app → shared`
+
+Forbidden: `shared → features`, reverse feature dependencies
+
+### Feature Public API
+
+External code MUST import from a feature's `index.ts`, never from internal files:
+
+```ts
+// Correct
+import { SwapCard } from '@/features/swap'
+
+// Wrong — bypasses public API
+import { SwapCard } from '@/features/swap/components/swap-card'
+```
+
+### Feature Dependency Graph
+
+- `swap → token` ✅ (swap needs token selection)
+- `swap → wallet` ✅ (swap needs balance and tx execution)
+- `token → swap` ❌ (token is a base feature)
+- `wallet → swap` ❌ (wallet is a base feature)
 
 ## Build, Test, and Development Commands
 - `pnpm dev`: Start local development server.
