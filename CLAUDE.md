@@ -55,6 +55,10 @@ Per-environment config is managed via `.env.*` files, with a single entry point 
 
 Business code imports config from `@/shared/config/env` — never read `process.env` directly.
 
+## Commit Messages
+
+- **禁止** 在提交信息中添加 `Co-Authored-By` AI 署名（如 `Co-Authored-By: Claude ...`）。此规则由 commitlint 的 `no-ai-co-author` 规则强制执行。
+
 ## Tooling
 
 - Package manager: pnpm
