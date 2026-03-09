@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   return {
     test: {
       environment: "jsdom",
-      setupFiles: ["./src/test/setup.ts"],
+      setupFiles: ["./src/shared/test/setup.ts"],
       include: ["src/**/__tests__/**/*.test.{ts,tsx}"],
       css: false,
       env,
