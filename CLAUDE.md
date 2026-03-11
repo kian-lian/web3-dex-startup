@@ -43,8 +43,6 @@ Prompt the user to configure these if not installed:
 - Full quality gate: `pnpm ci`
 - Security scan: `pnpm security:audit` / `pnpm security:secrets`
 - Bundle analysis: `pnpm analyze`
-- Add changeset: `pnpm changeset`
-- Bump versions: `pnpm version-packages`
 
 ## Environment Configuration
 
@@ -61,6 +59,10 @@ Business code imports config from `@/shared/config/env` — never read `process.
 ## Commit Messages
 
 - **禁止** 在提交信息中添加 `Co-Authored-By` AI 署名（如 `Co-Authored-By: Claude ...`）。此规则由 commitlint 的 `no-ai-co-author` 规则强制执行。
+
+## Thinking Strategy
+
+- 遇到需要深度复杂思考的任务时（如架构设计、复杂 bug 分析、多步骤推理），使用 `/ultrathink` skill 进行深度推理。
 
 ## Tooling
 

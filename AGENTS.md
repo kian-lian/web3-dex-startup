@@ -69,7 +69,6 @@ import { SwapCard } from '@/features/swap/components/swap-card'
 - `pnpm security:audit`: Scan dependencies for high+ vulnerabilities.
 - `pnpm security:secrets`: Scan repository for hardcoded secrets.
 - `pnpm analyze`: Bundle size analysis (opens browser report).
-- `pnpm changeset`: Add a changeset entry for version/changelog tracking.
 
 ## Coding Style & Naming Conventions
 - Language: TypeScript with `strict` mode.

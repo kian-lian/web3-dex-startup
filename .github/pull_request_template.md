@@ -26,6 +26,5 @@ Attach logs/screenshots if UI or behavior changed.
 
 ## Checklist
 - [ ] I updated docs if behavior or workflow changed
-- [ ] I added a changeset for release-worthy changes, or none is needed
 - [ ] I confirmed no secrets are included in this PR
 - [ ] I followed Feature-First architecture boundaries

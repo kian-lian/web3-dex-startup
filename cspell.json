@@ -38,6 +38,7 @@
     "nodenext",
     "pino",
     "multistream",
-    "biteagle"
+    "biteagle",
+    "nosniff"
   ]
 }

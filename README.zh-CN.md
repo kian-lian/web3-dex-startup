@@ -154,26 +154,8 @@ CI 必过检查：
 ## 贡献规范
 
 - 使用 Conventional Commits（`feat:`、`fix:`、`chore:` 等）
-- 对用户可感知或需要进入版本记录的变更，补充 changeset：`pnpm changeset`
 - PR 尽量小而聚焦
 - 行为变更请附验证证据
-
-版本记录流程：
-
-1. 在功能分支里对需要进入版本记录的改动执行 `pnpm changeset`。
-2. 合并正常业务 PR 到 `main`。
-3. 等待自动生成 `chore(release): version packages` PR。
-4. 合并这个版本 PR，正式写入新版本号和 changelog。
-
-部署说明：
-
-- `pnpm changeset` 只负责生成待发布记录，本身不会部署。
-- 生产部署是单独步骤，除非你的托管平台会在 `main` 合并后自动部署。
-
-详细文档：
-
-- `docs/engineering/versioning.md`
-- `docs/engineering/update-procedure.md`
 
 ## License
 

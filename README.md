@@ -42,7 +42,7 @@ pnpm install
 
 ```bash
 cp .env.example .env.local
-```
+```****
 
 Set your WalletConnect project ID in `.env.local`:
 
@@ -154,26 +154,8 @@ Current default chain configuration is defined in `src/shared/config/wagmi.ts`.
 ## Contributing
 
 - Follow Conventional Commits (`feat:`, `fix:`, `chore:`, etc.)
-- Add a changeset for user-visible or release-worthy changes: `pnpm changeset`
 - Keep PRs small and focused
 - Include validation evidence for behavior changes
-
-Versioning workflow:
-
-1. Run `pnpm changeset` in your feature branch for release-worthy changes.
-2. Merge the normal PR into `main`.
-3. Wait for the auto-generated `chore(release): version packages` PR.
-4. Merge that version PR to record the new version and changelog.
-
-Deployment note:
-
-- `pnpm changeset` only records pending release info. It does not deploy by itself.
-- Production deployment is separate, unless your hosting platform auto-deploys from `main`.
-
-Detailed docs:
-
-- `docs/engineering/versioning.md`
-- `docs/engineering/update-procedure.md`
 
 ## License
 
