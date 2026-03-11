@@ -3,6 +3,8 @@
     "biomejs.biome",
     "editorconfig.editorconfig",
     "bradlc.vscode-tailwindcss",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss"
   ]
 }

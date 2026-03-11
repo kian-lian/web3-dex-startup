@@ -28,3 +28,4 @@ Attach logs/screenshots if UI or behavior changed.
 - [ ] I updated docs if behavior or workflow changed
 - [ ] I confirmed no secrets are included in this PR
 - [ ] I followed Feature-First architecture boundaries
+- [ ] PR title follows Conventional Commits (e.g. `feat(scope): ...`)

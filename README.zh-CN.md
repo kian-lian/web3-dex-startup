@@ -123,23 +123,35 @@ pnpm security:secrets
 
 CI 必过检查：
 
+- `semantic-pr-title`（PR 标题符合 Conventional Commits）
 - `quality`（lint、typecheck、test、build、spellcheck）
 - `security-sca`（依赖漏洞扫描）
 - `security-secret`（gitleaks 密钥扫描）
 
-建议为 `main` 分支开启保护策略：
+仓库需要为 `main` 开启以下设置：
 
 - 合并前必须走 Pull Request
 - 至少 1 个 Approving Review
+- 必须通过 CODEOWNERS 审批
+- 合并前必须解决会话（conversation）
 - 必须通过以下状态检查：
+  - `semantic-pr-title`
   - `quality`
   - `security-sca`
   - `security-secret`
+- 管理员同样受保护策略约束
 
-更多说明：
+仓库需要开启以下合并自动化设置：
 
-- `docs/engineering/ci-quality-gates.md`
-- `docs/engineering/security-baseline.md`
+- 启用仓库级 Auto-merge
+- 配置 GitHub Actions 工作流权限：
+  - 默认工作流权限设置为：`read and write`
+  - 开启 `Allow GitHub Actions to approve pull requests`
+
+贡献参考文档：
+
+- `CONTRIBUTING.md`
+- `CONTRIBUTING.zh-CN.md`
 
 ## 环境与安全说明
 
@@ -153,9 +165,7 @@ CI 必过检查：
 
 ## 贡献规范
 
-- 使用 Conventional Commits（`feat:`、`fix:`、`chore:` 等）
-- PR 尽量小而聚焦
-- 行为变更请附验证证据
+完整的 PR、CI、发布与安全流程请阅读 `CONTRIBUTING.zh-CN.md`。
 
 ## License
 

@@ -123,23 +123,35 @@ pnpm security:secrets
 
 Required CI checks:
 
+- `semantic-pr-title` (PR title follows Conventional Commits)
 - `quality` (lint, typecheck, test, build, spellcheck)
 - `security-sca` (dependency vulnerability scan)
 - `security-secret` (secret scan with gitleaks)
 
-Recommended branch protection for `main`:
+Repository settings that must be enabled for `main`:
 
 - Require pull request before merging
 - Require at least 1 approving review
+- Require CODEOWNERS review
+- Require conversation resolution before merging
 - Require status checks to pass before merging:
+  - `semantic-pr-title`
   - `quality`
   - `security-sca`
   - `security-secret`
+- Enforce protection for administrators
 
-See also:
+Repository settings that must be enabled for merge automation:
 
-- `docs/engineering/ci-quality-gates.md`
-- `docs/engineering/security-baseline.md`
+- Enable auto-merge at repository level
+- Configure GitHub Actions workflow permissions:
+  - Set default workflow permissions to `read and write`
+  - Enable `Allow GitHub Actions to approve pull requests`
+
+Contribution reference:
+
+- `CONTRIBUTING.md`
+- `CONTRIBUTING.zh-CN.md`
 
 ## Environment Notes
 
@@ -153,9 +165,7 @@ Current default chain configuration is defined in `src/shared/config/wagmi.ts`.
 
 ## Contributing
 
-- Follow Conventional Commits (`feat:`, `fix:`, `chore:`, etc.)
-- Keep PRs small and focused
-- Include validation evidence for behavior changes
+Read `CONTRIBUTING.md` for the complete PR, CI, release, and security workflow.
 
 ## License
 
