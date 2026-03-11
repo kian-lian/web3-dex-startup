@@ -34,6 +34,8 @@ Prompt the user to configure these if not installed:
 ## Commands
 
 - Dev server: `pnpm dev`
+- Build: `pnpm build`
+- Start production: `pnpm start`
 - Type check: `pnpm typecheck`
 - Lint: `pnpm lint`
 - Format: `pnpm format`
@@ -59,6 +61,8 @@ Business code imports config from `@/shared/config/env` — never read `process.
 ## Commit Messages
 
 - **禁止** 在提交信息中添加 `Co-Authored-By` AI 署名（如 `Co-Authored-By: Claude ...`）。此规则由 commitlint 的 `no-ai-co-author` 规则强制执行。
+- Conventional Commits 格式，允许的 type: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `revert`
+- Subject 最大长度: 72 字符
 
 ## Thinking Strategy
 
@@ -68,3 +72,12 @@ Business code imports config from `@/shared/config/env` — never read `process.
 
 - Package manager: pnpm
 - GitHub operations: `gh` CLI
+- Engine requirements: Node ≥ 20, pnpm ≥ 9
+
+## Key Files
+
+- `src/middleware.ts` — Next.js middleware (security headers, etc.)
+- `src/instrumentation.ts` / `instrumentation-client.ts` — Sentry initialization
+- `src/shared/config/env.ts` — Environment variable single entry point
+- `src/shared/config/wagmi.ts` — Wagmi/chain configuration
+- `src/shared/providers/` — Global providers (Web3, QueryClient)

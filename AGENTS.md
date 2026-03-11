@@ -81,6 +81,24 @@ import { SwapCard } from '@/features/swap/components/swap-card'
 - Formatting/linting: Biome (`pnpm lint`, `pnpm format`).
 - Prefer Server Components; add `"use client"` only when browser-only behavior is required.
 
+### File Header Convention
+
+所有源码文件（`.ts`, `.tsx`, `.js`, `.jsx`）顶部必须添加注释头：
+
+```ts
+/**
+ * author: <作者名>
+ * create time: <YYYY-MM-DD HH:mm:ss>
+ * last edit time: <YYYY-MM-DD HH:mm:ss>
+ * description: <简要描述文件的功能和作用>
+ */
+```
+
+- **新建文件：** `create time` 和 `last edit time` 设为当前时间，`author` 填写当前作者。
+- **修改文件：** 更新 `last edit time` 为当前时间；若当前作者不在 `author` 列表中则追加（逗号分隔）；`create time` 保持不变。
+- **description：** 简要说明文件的功能和作用，方便他人快速了解内容和用途。
+- **排除范围：** 自动生成的文件（如 `shared/components/ui/`）、配置文件（`.json`, `.config.*`）、类型声明文件（`.d.ts`）不需要添加。
+
 ## Testing Guidelines
 - Framework: Vitest + Testing Library (`jsdom`).
 - Test files: `*.test.ts` / `*.test.tsx` (or `*.spec.ts(x)`).
