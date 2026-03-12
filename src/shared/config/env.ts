@@ -72,6 +72,16 @@ export const enableTestnets = optionalBoolean(
 export const defaultChainId = optionalNumber("NEXT_PUBLIC_DEFAULT_CHAIN_ID", 1);
 
 // ---------------------------------------------------------------------------
+// API
+// ---------------------------------------------------------------------------
+
+/** Public API base URL (available in both server and client). */
+export const apiBaseUrl = optionalEnv("NEXT_PUBLIC_API_BASE_URL", "");
+
+/** Internal API base URL (server-only, never exposed to the browser). */
+export const internalApiBaseUrl = optionalEnv("INTERNAL_API_BASE_URL", "");
+
+// ---------------------------------------------------------------------------
 // Sentry
 // ---------------------------------------------------------------------------
 
