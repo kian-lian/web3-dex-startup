@@ -42,7 +42,7 @@ Prompt the user to configure these if not installed:
 - Tests: `pnpm test` (watch) / `pnpm test:run` (one-shot)
 - Coverage: `pnpm test:coverage`
 - Spell check: `pnpm spellcheck`
-- Full quality gate: `pnpm ci`
+- Full quality gate: `pnpm run ci`
 - Security scan: `pnpm security:audit` / `pnpm security:secrets`
 - Bundle analysis: `pnpm analyze`
 
