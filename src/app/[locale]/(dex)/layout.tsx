@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { ConnectButton } from "@/features/wallet";
 
 export default function DexLayout({
@@ -5,11 +6,13 @@ export default function DexLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const t = useTranslations("common");
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       <nav className="flex items-center justify-between border-zinc-200 border-b px-6 py-4 dark:border-zinc-800">
         <span className="font-bold text-lg text-zinc-900 dark:text-zinc-50">
-          Web3 DEX
+          {t("appName")}
         </span>
         <ConnectButton />
       </nav>
