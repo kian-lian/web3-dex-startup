@@ -1,0 +1,9 @@
+{
+  "wallet": {
+    "info": "钱包信息",
+    "address": "地址",
+    "chainId": "链 ID",
+    "balance": "余额",
+    "loading": "加载中..."
+  }
+}
