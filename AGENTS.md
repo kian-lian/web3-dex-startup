@@ -83,21 +83,21 @@ import { SwapCard } from '@/features/swap/components/swap-card'
 
 ### File Header Convention
 
-所有源码文件（`.ts`, `.tsx`, `.js`, `.jsx`）顶部必须添加注释头：
+All source files (`.ts`, `.tsx`, `.js`, `.jsx`) must include a comment header at the top:
 
 ```ts
 /**
- * author: <作者名>
+ * author: <GitHub username>
  * create time: <YYYY-MM-DD HH:mm:ss>
  * last edit time: <YYYY-MM-DD HH:mm:ss>
- * description: <简要描述文件的功能和作用>
+ * description: <brief description of the file's purpose>
  */
 ```
 
-- **新建文件：** `create time` 和 `last edit time` 设为当前时间，`author` 填写当前作者。
-- **修改文件：** 更新 `last edit time` 为当前时间；若当前作者不在 `author` 列表中则追加（逗号分隔）；`create time` 保持不变。
-- **description：** 简要说明文件的功能和作用，方便他人快速了解内容和用途。
-- **排除范围：** 自动生成的文件（如 `shared/components/ui/`）、配置文件（`.json`, `.config.*`）、类型声明文件（`.d.ts`）不需要添加。
+- **New files:** Set both `create time` and `last edit time` to the current time. Set `author` to the author's GitHub username.
+- **Modified files (CRITICAL):** **Every** file modification — no matter how small — **must** update `last edit time` to the current time. If the current author's GitHub username is not in the `author` list, append it (comma-separated). Keep `create time` unchanged. This applies to all edits including header-only changes, single-line fixes, and batch updates.
+- **description:** Briefly describe the file's purpose and functionality so others can quickly understand its content.
+- **Excluded:** Auto-generated files (e.g., `shared/components/ui/`), config files (`.json`, `.config.*`), and type declaration files (`.d.ts`) do not need headers.
 
 ## Testing Guidelines
 - Framework: Vitest + Testing Library (`jsdom`).
@@ -118,6 +118,27 @@ feat/xxx  ──PR──▸  dev  ──PR (merge commit)──▸  main
 ```
 
 Release automation (Release Please) only triggers on `main`, so releases happen after `dev → main` merges.
+
+## Versioning & Release
+
+The project uses [Release Please](https://github.com/googleapis/release-please) for automated releases, triggered on merges to `main`. Version bumps follow [Semantic Versioning](https://semver.org/) and are determined by Conventional Commit prefixes:
+
+| Commit prefix | Version bump | Example (`0.2.0` →) |
+|---|---|---|
+| `fix:` | PATCH | `0.2.1` |
+| `feat:` | MINOR | `0.3.0` |
+| `feat!:` or `BREAKING CHANGE:` footer | MAJOR | `1.0.0` |
+| `chore:`, `docs:`, `refactor:`, etc. | No release | — |
+
+Breaking changes can be indicated by:
+- Adding `!` after the type/scope: `feat!:` or `feat(swap)!:`
+- Adding a `BREAKING CHANGE:` footer in the commit body (after a blank line)
+
+When multiple commits are included in a release, the **highest-level** change wins (BREAKING > feat > fix).
+
+> **Note:** While MAJOR version is `0` (i.e., `0.x.x`), breaking changes bump MINOR instead of MAJOR per semver convention — the `0.x` range signals initial development.
+
+Configuration files: `.release-please-config.json`, `.release-please-manifest.json`.
 
 ## Commit & Pull Request Guidelines
 - Commit format: Conventional Commits (e.g., `feat(wallet): add connect state`).

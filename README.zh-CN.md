@@ -153,6 +153,20 @@ CI 必过检查：
 - `CONTRIBUTING.md`
 - `CONTRIBUTING.zh-CN.md`
 
+## 版本发布
+
+项目使用 [Release Please](https://github.com/googleapis/release-please) 自动化发布。当 commit 合并到 `main` 分支后，Release Please 根据 [Conventional Commits](https://www.conventionalcommits.org/) 前缀自动创建 Release PR：
+
+| Commit 前缀 | 版本变化 | 示例 |
+|---|---|---|
+| `fix:` | PATCH（`0.2.0` → `0.2.1`） | Bug 修复 |
+| `feat:` | MINOR（`0.2.0` → `0.3.0`） | 新功能 |
+| `feat!:` 或 `BREAKING CHANGE:` | MAJOR（`0.2.0` → `1.0.0`） | 破坏性变更 |
+
+其他前缀（`chore:`、`docs:`、`refactor:` 等）不会触发发版。
+
+合并 Release PR 后会自动发布 GitHub Release 并生成 CHANGELOG。
+
 ## 环境与安全说明
 
 - 禁止提交密钥，私有值请放在 `.env.local`。

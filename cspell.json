@@ -39,6 +39,8 @@
     "pino",
     "multistream",
     "biteagle",
-    "nosniff"
+    "nosniff",
+    "kian",
+    "lian"
   ]
 }

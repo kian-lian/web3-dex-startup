@@ -153,6 +153,20 @@ Contribution reference:
 - `CONTRIBUTING.md`
 - `CONTRIBUTING.zh-CN.md`
 
+## Versioning & Release
+
+Releases are automated via [Release Please](https://github.com/googleapis/release-please). When commits are merged to `main`, Release Please creates a Release PR based on [Conventional Commits](https://www.conventionalcommits.org/):
+
+| Commit prefix | Version bump | Example |
+|---|---|---|
+| `fix:` | PATCH (`0.2.0` → `0.2.1`) | Bug fixes |
+| `feat:` | MINOR (`0.2.0` → `0.3.0`) | New features |
+| `feat!:` or `BREAKING CHANGE:` | MAJOR (`0.2.0` → `1.0.0`) | Breaking changes |
+
+Other prefixes (`chore:`, `docs:`, `refactor:`, etc.) do not trigger a release.
+
+Merging the Release PR publishes a GitHub Release with an auto-generated CHANGELOG.
+
 ## Environment Notes
 
 - Never commit secrets; keep private values in `.env.local`.

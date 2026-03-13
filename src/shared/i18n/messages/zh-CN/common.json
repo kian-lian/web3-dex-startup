@@ -1,0 +1,7 @@
+{
+  "common": {
+    "appName": "Web3 DEX",
+    "loading": "加载中...",
+    "connectWallet": "连接钱包以开始使用"
+  }
+}

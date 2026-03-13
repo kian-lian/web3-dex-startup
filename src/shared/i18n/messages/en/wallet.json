@@ -1,0 +1,9 @@
+{
+  "wallet": {
+    "info": "Wallet Info",
+    "address": "Address",
+    "chainId": "Chain ID",
+    "balance": "Balance",
+    "loading": "Loading..."
+  }
+}

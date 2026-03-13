@@ -55,15 +55,19 @@ Environment variables are managed via `.env.local` (gitignored), with a single t
 
 Business code imports config from `@/shared/config/env` — never read `process.env` directly.
 
+## File Header Rule (CRITICAL)
+
+Every time you edit a source file (`.ts`, `.tsx`, `.js`, `.jsx`), you **must** update the `last edit time` field in the file header to the current time. No exceptions — this includes header-only edits, single-line fixes, and batch operations. See `AGENTS.md § File Header Convention` for the full spec.
+
 ## Commit Messages
 
-- **禁止** 在提交信息中添加 `Co-Authored-By` AI 署名（如 `Co-Authored-By: Claude ...`）。此规则由 commitlint 的 `no-ai-co-author` 规则强制执行。
-- Conventional Commits 格式，允许的 type: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `revert`
-- Subject 最大长度: 72 字符
+- **Never** add `Co-Authored-By` AI signatures (e.g., `Co-Authored-By: Claude ...`) to commit messages. This rule is enforced by the commitlint `no-ai-co-author` rule.
+- Use Conventional Commits format. Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `revert`
+- Subject max length: 72 characters
 
 ## Thinking Strategy
 
-- 遇到需要深度复杂思考的任务时（如架构设计、复杂 bug 分析、多步骤推理），使用 `/ultrathink` skill 进行深度推理。
+- For tasks requiring deep complex reasoning (e.g., architecture design, complex bug analysis, multi-step reasoning), use the `/ultrathink` skill for deep thinking.
 
 ## Tooling
 

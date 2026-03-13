@@ -1,4 +1,13 @@
-import { type NextRequest, NextResponse } from "next/server";
+/**
+ * author: kian-lian
+ * create time: 2026-03-08 00:00:00
+ * last edit time: 2026-03-13 15:05:48
+ * description: Next.js middleware — composes next-intl locale detection with security headers
+ */
+
+import type { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { routing } from "@/shared/i18n/routing";
 
 const CSP_DIRECTIVES = [
   "default-src 'self'",
@@ -45,8 +54,10 @@ const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
   ["X-DNS-Prefetch-Control", "on"],
 ];
 
-export function middleware(_request: NextRequest) {
-  const response = NextResponse.next();
+const intlMiddleware = createIntlMiddleware(routing);
+
+export function middleware(request: NextRequest) {
+  const response = intlMiddleware(request);
 
   for (const [name, value] of SECURITY_HEADERS) {
     response.headers.set(name, value);
@@ -63,7 +74,8 @@ export const config = {
      * - _next/image (image optimization)
      * - favicon.ico (browser favicon)
      * - monitoring (Sentry tunnel route)
+     * - api (API routes don't need locale)
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|monitoring).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|monitoring|api).*)",
   ],
 };

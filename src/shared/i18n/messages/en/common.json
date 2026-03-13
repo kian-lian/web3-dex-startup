@@ -1,0 +1,7 @@
+{
+  "common": {
+    "appName": "Web3 DEX",
+    "loading": "Loading...",
+    "connectWallet": "Connect your wallet to get started"
+  }
+}
