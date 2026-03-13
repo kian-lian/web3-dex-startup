@@ -1,6 +1,6 @@
 # Web3 DEX Project Development Constitution
 
-Version: 2.1 | Ratified: 2026-03-08
+Version: 2.2 | Ratified: 2026-03-08
 
 This document defines immutable core development principles. All AI Agents must follow unconditionally.
 
@@ -73,6 +73,15 @@ Code style is enforced by tooling, not human discipline.
 
 - **6.1 (Tooling Authority):** Biome is the single source of truth for code style. All code must pass checks before committing — no bypassing.
 - **6.2 (Naming Consistency):** Follow unified naming conventions (see `AGENTS.md`). Do not mix multiple styles.
+
+---
+
+## Article 7: Internationalization
+
+i18n is a cross-cutting concern. Navigation must be locale-aware.
+
+- **7.1 (Locale-Aware Navigation):** All in-app navigation (`Link`, `redirect`, `useRouter`, `usePathname`) MUST import from `@/shared/i18n/navigation`, never from `next/link` or `next/navigation`. This ensures the locale prefix is automatically applied to all routes.
+- **7.2 (No Hardcoded Strings):** All user-facing strings must use `useTranslations()` from `next-intl`. Hardcoded display text in components is forbidden.
 
 ---
 
