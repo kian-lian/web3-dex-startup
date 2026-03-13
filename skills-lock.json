@@ -151,6 +151,11 @@
       "sourceType": "github",
       "computedHash": "e688fcd4c5693e14ebd00d48e982dbd2be060fbea89f5f60531e79c704a1bc28"
     },
+    "ultrathink": {
+      "source": "kian-lian/agent-skills",
+      "sourceType": "github",
+      "computedHash": "f2441fb8a80a6ea981b217c02d0a816c51bdd1e3e15d22eeb77dfc8933639040"
+    },
     "vercel-composition-patterns": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",

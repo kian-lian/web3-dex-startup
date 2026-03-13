@@ -1,7 +1,7 @@
 /**
- * author: Claude
+ * author: kian-lian
  * create time: 2026-03-13 13:50:00
- * last edit time: 2026-03-13 13:50:00
+ * last edit time: 2026-03-13 15:05:48
  * description: next-intl request configuration — loads locale-specific messages
  */
 

@@ -1,7 +1,7 @@
 /**
- * author: Claude
+ * author: kian-lian
  * create time: 2026-03-08 00:00:00
- * last edit time: 2026-03-13 14:00:00
+ * last edit time: 2026-03-13 15:05:48
  * description: Next.js middleware — composes next-intl locale detection with security headers
  */
 
